@@ -37,3 +37,10 @@ The method compares function values by ordering. If your function returns `NaN` 
 ## Return value
 
 A `GoldenSectionResult` with fields `x` (minimiser estimate, the bracket midpoint), `fx` (function value at `x`), `a` and `b` (final bracket), `iterations`, and `evaluations`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
